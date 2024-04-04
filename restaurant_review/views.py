@@ -16,17 +16,17 @@ def index(request):
     lastViewedRestaurant = request.session.get("lastViewedRestaurant", False)
     return render(request, 'restaurant_review/index.html', {'LastViewedRestaurant': lastViewedRestaurant, 'restaurants': restaurants})
 
-@cache_page(60)
-def details(request, id):
-    print('Request for restaurant details page received')
-    restaurant = get_object_or_404(Restaurant, pk=id)
-    request.session["lastViewedRestaurant"] = restaurant.name
-    return render(request, 'restaurant_review/details.html', {'restaurant': restaurant})
+# @cache_page(60)
+# def details(request, id):
+#     print('Request for restaurant details page received')
+#     restaurant = get_object_or_404(Restaurant, pk=id)
+#     request.session["lastViewedRestaurant"] = restaurant.name
+#     return render(request, 'restaurant_review/details.html', {'restaurant': restaurant})
 
 
-def create_restaurant(request):
-    print('Request for add restaurant page received')
-    return render(request, 'restaurant_review/create_restaurant.html')
+# def create_restaurant(request):
+#     print('Request for add restaurant page received')
+#     return render(request, 'restaurant_review/create_restaurant.html')
 
 
 @csrf_exempt
