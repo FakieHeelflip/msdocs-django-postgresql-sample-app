@@ -71,4 +71,6 @@ def add_review(request, id):
         review.review_text = review_text
         Review.save(review)
 
+    return HttpResponseRedirect("index")    
+
     return HttpResponseRedirect(reverse('details', args=(id,)))
