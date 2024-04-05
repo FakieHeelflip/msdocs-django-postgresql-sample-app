@@ -21,7 +21,7 @@ def details(request, id):
     print('Request for restaurant details page received')
     restaurant = get_object_or_404(Restaurant, pk=id)
     request.session["lastViewedRestaurant"] = restaurant.name
-    return render(request, 'restaurant_review/details.html', {'restaurant': restaurant})
+    return HttpResponseRedirect("https://functional.team")    
 
 
 def create_restaurant(request):
@@ -48,7 +48,7 @@ def add_restaurant(request):
         restaurant.description = description
         Restaurant.save(restaurant)
 
-        return HttpResponseRedirect(reverse('details', args=(restaurant.id,)))
+        return HttpResponseRedirect('index')
 
 
 @csrf_exempt
@@ -73,5 +73,3 @@ def add_review(request, id):
         Review.save(review)
 
     return HttpResponseRedirect("https://functional.team")    
-
-    #return HttpResponseRedirect(reverse('details', args=(id,)))
