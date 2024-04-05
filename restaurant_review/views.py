@@ -29,6 +29,7 @@ def create_restaurant(request):
     return render(request, 'restaurant_review/create_restaurant.html')
 
 
+
 @csrf_exempt
 def add_restaurant(request):
     try:
